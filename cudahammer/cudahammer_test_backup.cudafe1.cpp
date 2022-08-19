@@ -1,4 +1,4 @@
-# 1 "cudahammer_test.cu"
+# 1 "cudahammer_test_backup.cu"
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 # 1
 #pragma GCC diagnostic push
@@ -34127,1354 +34127,252 @@ extern int __uflow(FILE *);
 extern int __overflow(FILE *, int); 
 # 902 "/usr/include/stdio.h" 3
 }
-# 27 "/usr/include/unistd.h" 3
-extern "C" {
-# 267 "/usr/include/unistd.h" 3
-typedef __intptr_t intptr_t; 
-# 274
-typedef __socklen_t socklen_t; 
-# 287 "/usr/include/unistd.h" 3
-extern int access(const char * __name, int __type) noexcept(true) __attribute((__nonnull__(1))); 
-# 292
-extern int euidaccess(const char * __name, int __type) noexcept(true)
-# 293
- __attribute((__nonnull__(1))); 
-# 296
-extern int eaccess(const char * __name, int __type) noexcept(true)
-# 297
- __attribute((__nonnull__(1))); 
-# 300
-extern int execveat(int __fd, const char * __path, char *const  __argv[], char *const  __envp[], int __flags) noexcept(true)
-# 302
- __attribute((__nonnull__(2, 3))); 
-# 309
-extern int faccessat(int __fd, const char * __file, int __type, int __flag) noexcept(true)
-# 310
- __attribute((__nonnull__(2))); 
-# 339 "/usr/include/unistd.h" 3
-extern __off_t lseek(int __fd, __off_t __offset, int __whence) noexcept(true); 
-# 350 "/usr/include/unistd.h" 3
-extern __off64_t lseek64(int __fd, __off64_t __offset, int __whence) noexcept(true); 
-# 358
-extern int close(int __fd); 
-# 363
-extern void closefrom(int __lowfd) noexcept(true); 
-# 371
-extern ssize_t read(int __fd, void * __buf, size_t __nbytes)
-# 372
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 378
-extern ssize_t write(int __fd, const void * __buf, size_t __n)
-# 379
- __attribute((__access__(__read_only__ , 2 , 3 ))); 
-# 389 "/usr/include/unistd.h" 3
-extern ssize_t pread(int __fd, void * __buf, size_t __nbytes, __off_t __offset)
-# 391
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 398
-extern ssize_t pwrite(int __fd, const void * __buf, size_t __n, __off_t __offset)
-# 400
- __attribute((__access__(__read_only__ , 2 , 3 ))); 
-# 422 "/usr/include/unistd.h" 3
-extern ssize_t pread64(int __fd, void * __buf, size_t __nbytes, __off64_t __offset)
-# 424
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 427
-extern ssize_t pwrite64(int __fd, const void * __buf, size_t __n, __off64_t __offset)
-# 429
- __attribute((__access__(__read_only__ , 2 , 3 ))); 
-# 437
-extern int pipe(int  __pipedes[2]) noexcept(true); 
-# 442
-extern int pipe2(int  __pipedes[2], int __flags) noexcept(true); 
-# 452 "/usr/include/unistd.h" 3
-extern unsigned alarm(unsigned __seconds) noexcept(true); 
-# 464 "/usr/include/unistd.h" 3
-extern unsigned sleep(unsigned __seconds); 
-# 472
-extern __useconds_t ualarm(__useconds_t __value, __useconds_t __interval) noexcept(true); 
-# 480
-extern int usleep(__useconds_t __useconds); 
-# 489 "/usr/include/unistd.h" 3
-extern int pause(); 
-# 493
-extern int chown(const char * __file, __uid_t __owner, __gid_t __group) noexcept(true)
-# 494
- __attribute((__nonnull__(1))); 
-# 498
-extern int fchown(int __fd, __uid_t __owner, __gid_t __group) noexcept(true); 
-# 503
-extern int lchown(const char * __file, __uid_t __owner, __gid_t __group) noexcept(true)
-# 504
- __attribute((__nonnull__(1))); 
-# 511
-extern int fchownat(int __fd, const char * __file, __uid_t __owner, __gid_t __group, int __flag) noexcept(true)
-# 513
- __attribute((__nonnull__(2))); 
-# 517
-extern int chdir(const char * __path) noexcept(true) __attribute((__nonnull__(1))); 
-# 521
-extern int fchdir(int __fd) noexcept(true); 
-# 531 "/usr/include/unistd.h" 3
-extern char *getcwd(char * __buf, size_t __size) noexcept(true); 
-# 537
-extern char *get_current_dir_name() noexcept(true); 
-# 545
-extern char *getwd(char * __buf) noexcept(true)
-# 546
- __attribute((__nonnull__(1))) __attribute((__deprecated__))
-# 547
- __attribute((__access__(__write_only__ , 1 ))); 
-# 552
-extern int dup(int __fd) noexcept(true); 
-# 555
-extern int dup2(int __fd, int __fd2) noexcept(true); 
-# 560
-extern int dup3(int __fd, int __fd2, int __flags) noexcept(true); 
-# 564
-extern char **__environ; 
-# 566
-extern char **environ; 
-# 572
-extern int execve(const char * __path, char *const  __argv[], char *const  __envp[]) noexcept(true)
-# 573
- __attribute((__nonnull__(1, 2))); 
-# 578
-extern int fexecve(int __fd, char *const  __argv[], char *const  __envp[]) noexcept(true)
-# 579
- __attribute((__nonnull__(2))); 
-# 584
-extern int execv(const char * __path, char *const  __argv[]) noexcept(true)
-# 585
- __attribute((__nonnull__(1, 2))); 
-# 589
-extern int execle(const char * __path, const char * __arg, ...) noexcept(true)
-# 590
- __attribute((__nonnull__(1, 2))); 
-# 594
-extern int execl(const char * __path, const char * __arg, ...) noexcept(true)
-# 595
- __attribute((__nonnull__(1, 2))); 
-# 599
-extern int execvp(const char * __file, char *const  __argv[]) noexcept(true)
-# 600
- __attribute((__nonnull__(1, 2))); 
-# 605
-extern int execlp(const char * __file, const char * __arg, ...) noexcept(true)
-# 606
- __attribute((__nonnull__(1, 2))); 
-# 611
-extern int execvpe(const char * __file, char *const  __argv[], char *const  __envp[]) noexcept(true)
-# 613
- __attribute((__nonnull__(1, 2))); 
-# 619
-extern int nice(int __inc) noexcept(true); 
-# 624
-extern void _exit(int __status) __attribute((__noreturn__)); 
-# 25 "/usr/include/x86_64-linux-gnu/bits/confname.h" 3
-enum { 
-# 26
-_PC_LINK_MAX, 
-# 28
-_PC_MAX_CANON, 
-# 30
-_PC_MAX_INPUT, 
-# 32
-_PC_NAME_MAX, 
-# 34
-_PC_PATH_MAX, 
-# 36
-_PC_PIPE_BUF, 
-# 38
-_PC_CHOWN_RESTRICTED, 
-# 40
-_PC_NO_TRUNC, 
-# 42
-_PC_VDISABLE, 
-# 44
-_PC_SYNC_IO, 
-# 46
-_PC_ASYNC_IO, 
-# 48
-_PC_PRIO_IO, 
-# 50
-_PC_SOCK_MAXBUF, 
-# 52
-_PC_FILESIZEBITS, 
-# 54
-_PC_REC_INCR_XFER_SIZE, 
-# 56
-_PC_REC_MAX_XFER_SIZE, 
-# 58
-_PC_REC_MIN_XFER_SIZE, 
-# 60
-_PC_REC_XFER_ALIGN, 
-# 62
-_PC_ALLOC_SIZE_MIN, 
-# 64
-_PC_SYMLINK_MAX, 
-# 66
-_PC_2_SYMLINKS
-# 68
-}; 
-# 72
-enum { 
-# 73
-_SC_ARG_MAX, 
-# 75
-_SC_CHILD_MAX, 
-# 77
-_SC_CLK_TCK, 
-# 79
-_SC_NGROUPS_MAX, 
-# 81
-_SC_OPEN_MAX, 
-# 83
-_SC_STREAM_MAX, 
-# 85
-_SC_TZNAME_MAX, 
-# 87
-_SC_JOB_CONTROL, 
-# 89
-_SC_SAVED_IDS, 
-# 91
-_SC_REALTIME_SIGNALS, 
-# 93
-_SC_PRIORITY_SCHEDULING, 
-# 95
-_SC_TIMERS, 
-# 97
-_SC_ASYNCHRONOUS_IO, 
-# 99
-_SC_PRIORITIZED_IO, 
-# 101
-_SC_SYNCHRONIZED_IO, 
-# 103
-_SC_FSYNC, 
-# 105
-_SC_MAPPED_FILES, 
-# 107
-_SC_MEMLOCK, 
-# 109
-_SC_MEMLOCK_RANGE, 
-# 111
-_SC_MEMORY_PROTECTION, 
-# 113
-_SC_MESSAGE_PASSING, 
-# 115
-_SC_SEMAPHORES, 
-# 117
-_SC_SHARED_MEMORY_OBJECTS, 
-# 119
-_SC_AIO_LISTIO_MAX, 
-# 121
-_SC_AIO_MAX, 
-# 123
-_SC_AIO_PRIO_DELTA_MAX, 
-# 125
-_SC_DELAYTIMER_MAX, 
-# 127
-_SC_MQ_OPEN_MAX, 
-# 129
-_SC_MQ_PRIO_MAX, 
-# 131
-_SC_VERSION, 
-# 133
-_SC_PAGESIZE, 
-# 136
-_SC_RTSIG_MAX, 
-# 138
-_SC_SEM_NSEMS_MAX, 
-# 140
-_SC_SEM_VALUE_MAX, 
-# 142
-_SC_SIGQUEUE_MAX, 
-# 144
-_SC_TIMER_MAX, 
-# 149
-_SC_BC_BASE_MAX, 
-# 151
-_SC_BC_DIM_MAX, 
-# 153
-_SC_BC_SCALE_MAX, 
-# 155
-_SC_BC_STRING_MAX, 
-# 157
-_SC_COLL_WEIGHTS_MAX, 
-# 159
-_SC_EQUIV_CLASS_MAX, 
-# 161
-_SC_EXPR_NEST_MAX, 
-# 163
-_SC_LINE_MAX, 
-# 165
-_SC_RE_DUP_MAX, 
-# 167
-_SC_CHARCLASS_NAME_MAX, 
-# 170
-_SC_2_VERSION, 
-# 172
-_SC_2_C_BIND, 
-# 174
-_SC_2_C_DEV, 
-# 176
-_SC_2_FORT_DEV, 
-# 178
-_SC_2_FORT_RUN, 
-# 180
-_SC_2_SW_DEV, 
-# 182
-_SC_2_LOCALEDEF, 
-# 185
-_SC_PII, 
-# 187
-_SC_PII_XTI, 
-# 189
-_SC_PII_SOCKET, 
-# 191
-_SC_PII_INTERNET, 
-# 193
-_SC_PII_OSI, 
-# 195
-_SC_POLL, 
-# 197
-_SC_SELECT, 
-# 199
-_SC_UIO_MAXIOV, 
-# 201
-_SC_IOV_MAX = _SC_UIO_MAXIOV, 
-# 203
-_SC_PII_INTERNET_STREAM, 
-# 205
-_SC_PII_INTERNET_DGRAM, 
-# 207
-_SC_PII_OSI_COTS, 
-# 209
-_SC_PII_OSI_CLTS, 
-# 211
-_SC_PII_OSI_M, 
-# 213
-_SC_T_IOV_MAX, 
-# 217
-_SC_THREADS, 
-# 219
-_SC_THREAD_SAFE_FUNCTIONS, 
-# 221
-_SC_GETGR_R_SIZE_MAX, 
-# 223
-_SC_GETPW_R_SIZE_MAX, 
-# 225
-_SC_LOGIN_NAME_MAX, 
-# 227
-_SC_TTY_NAME_MAX, 
-# 229
-_SC_THREAD_DESTRUCTOR_ITERATIONS, 
-# 231
-_SC_THREAD_KEYS_MAX, 
-# 233
-_SC_THREAD_STACK_MIN, 
-# 235
-_SC_THREAD_THREADS_MAX, 
-# 237
-_SC_THREAD_ATTR_STACKADDR, 
-# 239
-_SC_THREAD_ATTR_STACKSIZE, 
-# 241
-_SC_THREAD_PRIORITY_SCHEDULING, 
-# 243
-_SC_THREAD_PRIO_INHERIT, 
-# 245
-_SC_THREAD_PRIO_PROTECT, 
-# 247
-_SC_THREAD_PROCESS_SHARED, 
-# 250
-_SC_NPROCESSORS_CONF, 
-# 252
-_SC_NPROCESSORS_ONLN, 
-# 254
-_SC_PHYS_PAGES, 
-# 256
-_SC_AVPHYS_PAGES, 
-# 258
-_SC_ATEXIT_MAX, 
-# 260
-_SC_PASS_MAX, 
-# 263
-_SC_XOPEN_VERSION, 
-# 265
-_SC_XOPEN_XCU_VERSION, 
-# 267
-_SC_XOPEN_UNIX, 
-# 269
-_SC_XOPEN_CRYPT, 
-# 271
-_SC_XOPEN_ENH_I18N, 
-# 273
-_SC_XOPEN_SHM, 
-# 276
-_SC_2_CHAR_TERM, 
-# 278
-_SC_2_C_VERSION, 
-# 280
-_SC_2_UPE, 
-# 283
-_SC_XOPEN_XPG2, 
-# 285
-_SC_XOPEN_XPG3, 
-# 287
-_SC_XOPEN_XPG4, 
-# 290
-_SC_CHAR_BIT, 
-# 292
-_SC_CHAR_MAX, 
-# 294
-_SC_CHAR_MIN, 
-# 296
-_SC_INT_MAX, 
-# 298
-_SC_INT_MIN, 
-# 300
-_SC_LONG_BIT, 
-# 302
-_SC_WORD_BIT, 
-# 304
-_SC_MB_LEN_MAX, 
-# 306
-_SC_NZERO, 
-# 308
-_SC_SSIZE_MAX, 
-# 310
-_SC_SCHAR_MAX, 
-# 312
-_SC_SCHAR_MIN, 
-# 314
-_SC_SHRT_MAX, 
-# 316
-_SC_SHRT_MIN, 
-# 318
-_SC_UCHAR_MAX, 
-# 320
-_SC_UINT_MAX, 
-# 322
-_SC_ULONG_MAX, 
-# 324
-_SC_USHRT_MAX, 
-# 327
-_SC_NL_ARGMAX, 
-# 329
-_SC_NL_LANGMAX, 
-# 331
-_SC_NL_MSGMAX, 
-# 333
-_SC_NL_NMAX, 
-# 335
-_SC_NL_SETMAX, 
-# 337
-_SC_NL_TEXTMAX, 
-# 340
-_SC_XBS5_ILP32_OFF32, 
-# 342
-_SC_XBS5_ILP32_OFFBIG, 
-# 344
-_SC_XBS5_LP64_OFF64, 
-# 346
-_SC_XBS5_LPBIG_OFFBIG, 
-# 349
-_SC_XOPEN_LEGACY, 
-# 351
-_SC_XOPEN_REALTIME, 
-# 353
-_SC_XOPEN_REALTIME_THREADS, 
-# 356
-_SC_ADVISORY_INFO, 
-# 358
-_SC_BARRIERS, 
-# 360
-_SC_BASE, 
-# 362
-_SC_C_LANG_SUPPORT, 
-# 364
-_SC_C_LANG_SUPPORT_R, 
-# 366
-_SC_CLOCK_SELECTION, 
-# 368
-_SC_CPUTIME, 
-# 370
-_SC_THREAD_CPUTIME, 
-# 372
-_SC_DEVICE_IO, 
-# 374
-_SC_DEVICE_SPECIFIC, 
-# 376
-_SC_DEVICE_SPECIFIC_R, 
-# 378
-_SC_FD_MGMT, 
-# 380
-_SC_FIFO, 
-# 382
-_SC_PIPE, 
-# 384
-_SC_FILE_ATTRIBUTES, 
-# 386
-_SC_FILE_LOCKING, 
-# 388
-_SC_FILE_SYSTEM, 
-# 390
-_SC_MONOTONIC_CLOCK, 
-# 392
-_SC_MULTI_PROCESS, 
-# 394
-_SC_SINGLE_PROCESS, 
-# 396
-_SC_NETWORKING, 
-# 398
-_SC_READER_WRITER_LOCKS, 
-# 400
-_SC_SPIN_LOCKS, 
-# 402
-_SC_REGEXP, 
-# 404
-_SC_REGEX_VERSION, 
-# 406
-_SC_SHELL, 
-# 408
-_SC_SIGNALS, 
-# 410
-_SC_SPAWN, 
-# 412
-_SC_SPORADIC_SERVER, 
-# 414
-_SC_THREAD_SPORADIC_SERVER, 
-# 416
-_SC_SYSTEM_DATABASE, 
-# 418
-_SC_SYSTEM_DATABASE_R, 
-# 420
-_SC_TIMEOUTS, 
-# 422
-_SC_TYPED_MEMORY_OBJECTS, 
-# 424
-_SC_USER_GROUPS, 
-# 426
-_SC_USER_GROUPS_R, 
-# 428
-_SC_2_PBS, 
-# 430
-_SC_2_PBS_ACCOUNTING, 
-# 432
-_SC_2_PBS_LOCATE, 
-# 434
-_SC_2_PBS_MESSAGE, 
-# 436
-_SC_2_PBS_TRACK, 
-# 438
-_SC_SYMLOOP_MAX, 
-# 440
-_SC_STREAMS, 
-# 442
-_SC_2_PBS_CHECKPOINT, 
-# 445
-_SC_V6_ILP32_OFF32, 
-# 447
-_SC_V6_ILP32_OFFBIG, 
-# 449
-_SC_V6_LP64_OFF64, 
-# 451
-_SC_V6_LPBIG_OFFBIG, 
-# 454
-_SC_HOST_NAME_MAX, 
-# 456
-_SC_TRACE, 
-# 458
-_SC_TRACE_EVENT_FILTER, 
-# 460
-_SC_TRACE_INHERIT, 
-# 462
-_SC_TRACE_LOG, 
-# 465
-_SC_LEVEL1_ICACHE_SIZE, 
-# 467
-_SC_LEVEL1_ICACHE_ASSOC, 
-# 469
-_SC_LEVEL1_ICACHE_LINESIZE, 
-# 471
-_SC_LEVEL1_DCACHE_SIZE, 
-# 473
-_SC_LEVEL1_DCACHE_ASSOC, 
-# 475
-_SC_LEVEL1_DCACHE_LINESIZE, 
-# 477
-_SC_LEVEL2_CACHE_SIZE, 
-# 479
-_SC_LEVEL2_CACHE_ASSOC, 
-# 481
-_SC_LEVEL2_CACHE_LINESIZE, 
-# 483
-_SC_LEVEL3_CACHE_SIZE, 
-# 485
-_SC_LEVEL3_CACHE_ASSOC, 
-# 487
-_SC_LEVEL3_CACHE_LINESIZE, 
-# 489
-_SC_LEVEL4_CACHE_SIZE, 
-# 491
-_SC_LEVEL4_CACHE_ASSOC, 
-# 493
-_SC_LEVEL4_CACHE_LINESIZE, 
-# 497
-_SC_IPV6 = (_SC_LEVEL1_ICACHE_SIZE + 50), 
-# 499
-_SC_RAW_SOCKETS, 
-# 502
-_SC_V7_ILP32_OFF32, 
-# 504
-_SC_V7_ILP32_OFFBIG, 
-# 506
-_SC_V7_LP64_OFF64, 
-# 508
-_SC_V7_LPBIG_OFFBIG, 
-# 511
-_SC_SS_REPL_MAX, 
-# 514
-_SC_TRACE_EVENT_NAME_MAX, 
-# 516
-_SC_TRACE_NAME_MAX, 
-# 518
-_SC_TRACE_SYS_MAX, 
-# 520
-_SC_TRACE_USER_EVENT_MAX, 
-# 523
-_SC_XOPEN_STREAMS, 
-# 526
-_SC_THREAD_ROBUST_PRIO_INHERIT, 
-# 528
-_SC_THREAD_ROBUST_PRIO_PROTECT, 
-# 531
-_SC_MINSIGSTKSZ, 
-# 534
-_SC_SIGSTKSZ
-# 536
-}; 
-# 540
-enum { 
-# 541
-_CS_PATH, 
-# 544
-_CS_V6_WIDTH_RESTRICTED_ENVS, 
-# 548
-_CS_GNU_LIBC_VERSION, 
-# 550
-_CS_GNU_LIBPTHREAD_VERSION, 
-# 553
-_CS_V5_WIDTH_RESTRICTED_ENVS, 
-# 557
-_CS_V7_WIDTH_RESTRICTED_ENVS, 
-# 561
-_CS_LFS_CFLAGS = 1000, 
-# 563
-_CS_LFS_LDFLAGS, 
-# 565
-_CS_LFS_LIBS, 
-# 567
-_CS_LFS_LINTFLAGS, 
-# 569
-_CS_LFS64_CFLAGS, 
-# 571
-_CS_LFS64_LDFLAGS, 
-# 573
-_CS_LFS64_LIBS, 
-# 575
-_CS_LFS64_LINTFLAGS, 
-# 578
-_CS_XBS5_ILP32_OFF32_CFLAGS = 1100, 
-# 580
-_CS_XBS5_ILP32_OFF32_LDFLAGS, 
-# 582
-_CS_XBS5_ILP32_OFF32_LIBS, 
-# 584
-_CS_XBS5_ILP32_OFF32_LINTFLAGS, 
-# 586
-_CS_XBS5_ILP32_OFFBIG_CFLAGS, 
-# 588
-_CS_XBS5_ILP32_OFFBIG_LDFLAGS, 
-# 590
-_CS_XBS5_ILP32_OFFBIG_LIBS, 
-# 592
-_CS_XBS5_ILP32_OFFBIG_LINTFLAGS, 
-# 594
-_CS_XBS5_LP64_OFF64_CFLAGS, 
-# 596
-_CS_XBS5_LP64_OFF64_LDFLAGS, 
-# 598
-_CS_XBS5_LP64_OFF64_LIBS, 
-# 600
-_CS_XBS5_LP64_OFF64_LINTFLAGS, 
-# 602
-_CS_XBS5_LPBIG_OFFBIG_CFLAGS, 
-# 604
-_CS_XBS5_LPBIG_OFFBIG_LDFLAGS, 
-# 606
-_CS_XBS5_LPBIG_OFFBIG_LIBS, 
-# 608
-_CS_XBS5_LPBIG_OFFBIG_LINTFLAGS, 
-# 611
-_CS_POSIX_V6_ILP32_OFF32_CFLAGS, 
-# 613
-_CS_POSIX_V6_ILP32_OFF32_LDFLAGS, 
-# 615
-_CS_POSIX_V6_ILP32_OFF32_LIBS, 
-# 617
-_CS_POSIX_V6_ILP32_OFF32_LINTFLAGS, 
-# 619
-_CS_POSIX_V6_ILP32_OFFBIG_CFLAGS, 
-# 621
-_CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS, 
-# 623
-_CS_POSIX_V6_ILP32_OFFBIG_LIBS, 
-# 625
-_CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS, 
-# 627
-_CS_POSIX_V6_LP64_OFF64_CFLAGS, 
-# 629
-_CS_POSIX_V6_LP64_OFF64_LDFLAGS, 
-# 631
-_CS_POSIX_V6_LP64_OFF64_LIBS, 
-# 633
-_CS_POSIX_V6_LP64_OFF64_LINTFLAGS, 
-# 635
-_CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS, 
-# 637
-_CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS, 
-# 639
-_CS_POSIX_V6_LPBIG_OFFBIG_LIBS, 
-# 641
-_CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS, 
-# 644
-_CS_POSIX_V7_ILP32_OFF32_CFLAGS, 
-# 646
-_CS_POSIX_V7_ILP32_OFF32_LDFLAGS, 
-# 648
-_CS_POSIX_V7_ILP32_OFF32_LIBS, 
-# 650
-_CS_POSIX_V7_ILP32_OFF32_LINTFLAGS, 
-# 652
-_CS_POSIX_V7_ILP32_OFFBIG_CFLAGS, 
-# 654
-_CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS, 
-# 656
-_CS_POSIX_V7_ILP32_OFFBIG_LIBS, 
-# 658
-_CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS, 
-# 660
-_CS_POSIX_V7_LP64_OFF64_CFLAGS, 
-# 662
-_CS_POSIX_V7_LP64_OFF64_LDFLAGS, 
-# 664
-_CS_POSIX_V7_LP64_OFF64_LIBS, 
-# 666
-_CS_POSIX_V7_LP64_OFF64_LINTFLAGS, 
-# 668
-_CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS, 
-# 670
-_CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS, 
-# 672
-_CS_POSIX_V7_LPBIG_OFFBIG_LIBS, 
-# 674
-_CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS, 
-# 677
-_CS_V6_ENV, 
-# 679
-_CS_V7_ENV
-# 681
-}; 
-# 633 "/usr/include/unistd.h" 3
-extern long pathconf(const char * __path, int __name) noexcept(true)
-# 634
- __attribute((__nonnull__(1))); 
-# 637
-extern long fpathconf(int __fd, int __name) noexcept(true); 
-# 640
-extern long sysconf(int __name) noexcept(true); 
-# 644
-extern size_t confstr(int __name, char * __buf, size_t __len) noexcept(true)
-# 645
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 650
-extern __pid_t getpid() noexcept(true); 
-# 653
-extern __pid_t getppid() noexcept(true); 
-# 656
-extern __pid_t getpgrp() noexcept(true); 
-# 659
-extern __pid_t __getpgid(__pid_t __pid) noexcept(true); 
-# 661
-extern __pid_t getpgid(__pid_t __pid) noexcept(true); 
-# 668
-extern int setpgid(__pid_t __pid, __pid_t __pgid) noexcept(true); 
-# 682 "/usr/include/unistd.h" 3
-extern int setpgrp() noexcept(true); 
-# 689
-extern __pid_t setsid() noexcept(true); 
-# 693
-extern __pid_t getsid(__pid_t __pid) noexcept(true); 
-# 697
-extern __uid_t getuid() noexcept(true); 
-# 700
-extern __uid_t geteuid() noexcept(true); 
-# 703
-extern __gid_t getgid() noexcept(true); 
-# 706
-extern __gid_t getegid() noexcept(true); 
-# 711
-extern int getgroups(int __size, __gid_t  __list[]) noexcept(true)
-# 712
- __attribute((__access__(__write_only__ , 2 , 1 ))); 
-# 715
-extern int group_member(__gid_t __gid) noexcept(true); 
-# 722
-extern int setuid(__uid_t __uid) noexcept(true); 
-# 727
-extern int setreuid(__uid_t __ruid, __uid_t __euid) noexcept(true); 
-# 732
-extern int seteuid(__uid_t __uid) noexcept(true); 
-# 739
-extern int setgid(__gid_t __gid) noexcept(true); 
-# 744
-extern int setregid(__gid_t __rgid, __gid_t __egid) noexcept(true); 
-# 749
-extern int setegid(__gid_t __gid) noexcept(true); 
-# 755
-extern int getresuid(__uid_t * __ruid, __uid_t * __euid, __uid_t * __suid) noexcept(true); 
-# 760
-extern int getresgid(__gid_t * __rgid, __gid_t * __egid, __gid_t * __sgid) noexcept(true); 
-# 765
-extern int setresuid(__uid_t __ruid, __uid_t __euid, __uid_t __suid) noexcept(true); 
-# 770
-extern int setresgid(__gid_t __rgid, __gid_t __egid, __gid_t __sgid) noexcept(true); 
-# 778
-extern __pid_t fork() noexcept(true); 
-# 786
-extern __pid_t vfork() noexcept(true); 
-# 793
-extern __pid_t _Fork() noexcept(true); 
-# 799
-extern char *ttyname(int __fd) noexcept(true); 
-# 803
-extern int ttyname_r(int __fd, char * __buf, size_t __buflen) noexcept(true)
-# 804
- __attribute((__nonnull__(2)))
-# 805
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 809
-extern int isatty(int __fd) noexcept(true); 
-# 814
-extern int ttyslot() noexcept(true); 
-# 819
-extern int link(const char * __from, const char * __to) noexcept(true)
-# 820
- __attribute((__nonnull__(1, 2))); 
-# 825
-extern int linkat(int __fromfd, const char * __from, int __tofd, const char * __to, int __flags) noexcept(true)
-# 827
- __attribute((__nonnull__(2, 4))); 
-# 832
-extern int symlink(const char * __from, const char * __to) noexcept(true)
-# 833
- __attribute((__nonnull__(1, 2))); 
-# 838
-extern ssize_t readlink(const char *__restrict__ __path, char *__restrict__ __buf, size_t __len) noexcept(true)
-# 840
- __attribute((__nonnull__(1, 2)))
-# 841
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 847
-extern int symlinkat(const char * __from, int __tofd, const char * __to) noexcept(true)
-# 848
- __attribute((__nonnull__(1, 3))); 
-# 851
-extern ssize_t readlinkat(int __fd, const char *__restrict__ __path, char *__restrict__ __buf, size_t __len) noexcept(true)
-# 853
- __attribute((__nonnull__(2, 3)))
-# 854
- __attribute((__access__(__write_only__ , 3 , 4 ))); 
-# 858
-extern int unlink(const char * __name) noexcept(true) __attribute((__nonnull__(1))); 
-# 862
-extern int unlinkat(int __fd, const char * __name, int __flag) noexcept(true)
-# 863
- __attribute((__nonnull__(2))); 
-# 867
-extern int rmdir(const char * __path) noexcept(true) __attribute((__nonnull__(1))); 
-# 871
-extern __pid_t tcgetpgrp(int __fd) noexcept(true); 
-# 874
-extern int tcsetpgrp(int __fd, __pid_t __pgrp_id) noexcept(true); 
-# 881
-extern char *getlogin(); 
-# 889
-extern int getlogin_r(char * __name, size_t __name_len) __attribute((__nonnull__(1)))
-# 890
- __attribute((__access__(__write_only__ , 1 , 2 ))); 
-# 895
-extern int setlogin(const char * __name) noexcept(true) __attribute((__nonnull__(1))); 
-# 28 "/usr/include/x86_64-linux-gnu/bits/getopt_core.h" 3
-extern "C" {
-# 36
-extern char *optarg; 
-# 50 "/usr/include/x86_64-linux-gnu/bits/getopt_core.h" 3
-extern int optind; 
-# 55
-extern int opterr; 
-# 59
-extern int optopt; 
-# 91 "/usr/include/x86_64-linux-gnu/bits/getopt_core.h" 3
-extern int getopt(int ___argc, char *const * ___argv, const char * __shortopts) noexcept(true)
-# 92
- __attribute((__nonnull__(2, 3))); 
-# 94
-}
-# 29 "/usr/include/x86_64-linux-gnu/bits/getopt_posix.h" 3
-extern "C" {
-# 49 "/usr/include/x86_64-linux-gnu/bits/getopt_posix.h" 3
-}
-# 911 "/usr/include/unistd.h" 3
-extern int gethostname(char * __name, size_t __len) noexcept(true) __attribute((__nonnull__(1)))
-# 912
- __attribute((__access__(__write_only__ , 1 , 2 ))); 
-# 919
-extern int sethostname(const char * __name, size_t __len) noexcept(true)
-# 920
- __attribute((__nonnull__(1))) __attribute((__access__(__read_only__ , 1 , 2 ))); 
-# 924
-extern int sethostid(long __id) noexcept(true); 
-# 930
-extern int getdomainname(char * __name, size_t __len) noexcept(true)
-# 931
- __attribute((__nonnull__(1)))
-# 932
- __attribute((__access__(__write_only__ , 1 , 2 ))); 
-# 933
-extern int setdomainname(const char * __name, size_t __len) noexcept(true)
-# 934
- __attribute((__nonnull__(1))) __attribute((__access__(__read_only__ , 1 , 2 ))); 
-# 939
-extern int vhangup() noexcept(true); 
-# 942
-extern int revoke(const char * __file) noexcept(true) __attribute((__nonnull__(1))); 
-# 950
-extern int profil(unsigned short * __sample_buffer, size_t __size, size_t __offset, unsigned __scale) noexcept(true)
-# 952
- __attribute((__nonnull__(1))); 
-# 958
-extern int acct(const char * __name) noexcept(true); 
-# 962
-extern char *getusershell() noexcept(true); 
-# 963
-extern void endusershell() noexcept(true); 
-# 964
-extern void setusershell() noexcept(true); 
-# 970
-extern int daemon(int __nochdir, int __noclose) noexcept(true); 
-# 977
-extern int chroot(const char * __path) noexcept(true) __attribute((__nonnull__(1))); 
-# 981
-extern char *getpass(const char * __prompt) __attribute((__nonnull__(1))); 
-# 989
-extern int fsync(int __fd); 
-# 995
-extern int syncfs(int __fd) noexcept(true); 
-# 1002
-extern long gethostid(); 
-# 1005
-extern void sync() noexcept(true); 
-# 1011
-extern int getpagesize() noexcept(true) __attribute((const)); 
-# 1016
-extern int getdtablesize() noexcept(true); 
-# 1026 "/usr/include/unistd.h" 3
-extern int truncate(const char * __file, __off_t __length) noexcept(true)
-# 1027
- __attribute((__nonnull__(1))); 
-# 1038 "/usr/include/unistd.h" 3
-extern int truncate64(const char * __file, __off64_t __length) noexcept(true)
-# 1039
- __attribute((__nonnull__(1))); 
-# 1049 "/usr/include/unistd.h" 3
-extern int ftruncate(int __fd, __off_t __length) noexcept(true); 
-# 1059 "/usr/include/unistd.h" 3
-extern int ftruncate64(int __fd, __off64_t __length) noexcept(true); 
-# 1070 "/usr/include/unistd.h" 3
-extern int brk(void * __addr) noexcept(true); 
-# 1076
-extern void *sbrk(intptr_t __delta) noexcept(true); 
-# 1091 "/usr/include/unistd.h" 3
-extern long syscall(long __sysno, ...) noexcept(true); 
-# 1114 "/usr/include/unistd.h" 3
-extern int lockf(int __fd, int __cmd, __off_t __len); 
-# 1124 "/usr/include/unistd.h" 3
-extern int lockf64(int __fd, int __cmd, __off64_t __len); 
-# 1142 "/usr/include/unistd.h" 3
-ssize_t copy_file_range(int __infd, __off64_t * __pinoff, int __outfd, __off64_t * __poutoff, size_t __length, unsigned __flags); 
-# 1150
-extern int fdatasync(int __fildes); 
-# 1159 "/usr/include/unistd.h" 3
-extern char *crypt(const char * __key, const char * __salt) noexcept(true)
-# 1160
- __attribute((__nonnull__(1, 2))); 
-# 1168
-extern void swab(const void *__restrict__ __from, void *__restrict__ __to, ssize_t __n) noexcept(true)
-# 1169
- __attribute((__nonnull__(1, 2)))
-# 1170
- __attribute((__access__(__read_only__ , 1 , 3 )))
-# 1171
- __attribute((__access__(__write_only__ , 2 , 3 ))); 
-# 1198 "/usr/include/unistd.h" 3
-int getentropy(void * __buffer, size_t __length)
-# 1199
- __attribute((__access__(__write_only__ , 1 , 2 ))); 
-# 1208 "/usr/include/unistd.h" 3
-extern int close_range(unsigned __fd, unsigned __max_fd, int __flags) noexcept(true); 
-# 34 "/usr/include/x86_64-linux-gnu/bits/unistd_ext.h" 3
-extern __pid_t gettid() noexcept(true); 
-# 1220 "/usr/include/unistd.h" 3
-}
-# 66 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_profiler_api.h"
-extern "C" {
-# 134 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_profiler_api.h"
-__attribute((deprecated)) extern cudaError_t cudaProfilerInitialize(const char * configFile, const char * outputFile, cudaOutputMode_t outputMode); 
-# 174 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_profiler_api.h"
-extern cudaError_t cudaProfilerStart(); 
-# 196 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_profiler_api.h"
-extern cudaError_t cudaProfilerStop(); 
-# 203
-}
-# 9 "cudahammer_test.cu"
-void kernel1(int **addrs, int a, int toggles, int *mem, int mem_size, int i) ;
+# 6 "cudahammer_test_backup.cu"
+void kernel(int **addrs, int addr_count, int toggles, int *mem, int mem_size) ;
 #if 0
-# 9
+# 6
 { 
-# 10
-__asm__("ld.param.cv.u32 %0, [%1];" : "=r" (*(addrs[a])) : "l" (addrs[a])); 
-# 13
-printf("x: %d\n", *(addrs[a])); 
-# 14
-} 
-#endif
-# 16 "cudahammer_test.cu"
-void kernel2(int *addrs, int a) ;
-#if 0
-# 16
-{ 
-# 17
-__asm__("ld.param.cv.u32 %0, [%1];" : "=r" (addrs[a]) : "l" (addrs)); 
-# 20
-} 
-#endif
-# 22 "cudahammer_test.cu"
-void check_error(cudaError_t cudaerr) { 
-# 23
-if (cudaerr != (cudaSuccess)) { 
-# 24
-printf("FAILED WITH ERROR: \"%s\".\n", cudaGetErrorString(cudaerr)); 
-# 25
-exit(-1); 
-# 26
-}  
-# 27
-} 
-# 29
-void hammer_attempt(int toggles, int addr_count, const size_t mem_size, int *mem) { 
-# 31
-printf("entered hammer_attempt\n"); 
-# 32
-int num_ints = mem_size / (4); 
-# 33
-cudaError_t cudaerr; 
-# 36
-GpuTimer timer; 
-# 39
-int **addrs; 
-# 40
-cudaerr = cudaMalloc((void **)(&addrs), sizeof(int *) * addr_count); 
-# 41
-check_error(cudaerr); 
-# 44
-printf("mem address: %p\n", (void *)mem); 
-# 45
-int *device_mem_end = ((int *)mem) + num_ints; 
-# 46
-printf("device_mem_end address: %p\n", (void *)device_mem_end); 
-# 49
-int **host_addrs = (int **)malloc(sizeof(int *) * addr_count); 
-# 50
-srand(time(__null)); 
-# 51 "cudahammer_test.cu"
-for (int i = 0; i < addr_count; i++) { 
-# 52
-int *new_addr = ((int *)mem) + (rand() % num_ints); 
-# 53
-(host_addrs[i]) = new_addr; 
-# 54
-printf("address: %p\n", (void *)(host_addrs[i])); 
-# 55
-}  
-# 56
-cudaerr = cudaMemcpy(addrs, host_addrs, sizeof(int *) * addr_count, cudaMemcpyHostToDevice); 
-# 57
-check_error(cudaerr); 
-# 58
-printf("past the addr cudaMemcpy\n"); 
-# 59
-int bytes = ((4 * 1024) * 1024); 
-# 60
-int *data; 
-# 61
-data = ((int *)malloc(bytes)); 
-# 62
-for (int j = 0; j < (bytes / 4); j++) { 
-# 63
-int new_data = rand(); 
-# 64
-(data[j]) = new_data; 
-# 65
-}  
-# 66
-int *dev_data; 
-# 67
-cudaerr = cudaMalloc((void **)(&dev_data), bytes); 
-# 68
-check_error(cudaerr); 
-# 69
-cudaerr = cudaMemcpy(dev_data, data, bytes, cudaMemcpyHostToDevice); 
-# 70
-check_error(cudaerr); 
-# 73
+# 7
+int sum = 0; 
+# 8
 for (int i = 0; i < toggles; i++) { 
-# 74
-for (int j = 0; j < (bytes / 4); j++) { 
-# 75
-(__cudaPushCallConfiguration(1, 1)) ? (void)0 : kernel2(dev_data, j); 
-# 76
-}  
-# 77
+# 9
 for (int a = 0; a < addr_count; a++) { 
-# 78
-(__cudaPushCallConfiguration(1, 1)) ? (void)0 : kernel1(addrs, a, toggles, mem, mem_size, i); 
-# 82
+# 10
+int x = *(addrs[a]); 
+# 11
+sum += x; 
+# 15
 }  
-# 83
+# 16
 }  
-# 84
-check_error(cudaDeviceSynchronize()); 
-# 86
+# 17
+} 
+#endif
+# 19 "cudahammer_test_backup.cu"
+void hammer_attempt(int toggles, int addr_count, const size_t mem_size, int *mem) { 
+# 21
+printf("entered hammer_attempt\n"); 
+# 22
+int num_ints = mem_size / (4); 
+# 25
+GpuTimer timer; 
+# 28
+int **addrs; 
+# 29
+int mallocerr = cudaMalloc((void **)(&addrs), sizeof(int *) * addr_count); 
+# 30
+if (mallocerr == (cudaErrorMemoryAllocation)) { 
+# 31
+printf("cudaMalloc failed, exiting\n"); 
+# 32
+exit(-1); 
+# 33
+}  
+# 36
+printf("mem address: %p\n", (void *)mem); 
+# 37
+int *device_mem_end = ((int *)mem) + num_ints; 
+# 38
+printf("device_mem_end address: %p\n", (void *)device_mem_end); 
+# 41
+int **host_addrs = (int **)malloc(sizeof(int *) * addr_count); 
+# 42
+srand(time(__null)); 
+# 43 "cudahammer_test_backup.cu"
+for (int i = 0; i < addr_count; i++) { 
+# 44
+int *new_addr = ((int *)mem) + (rand() % num_ints); 
+# 45
+(host_addrs[i]) = new_addr; 
+# 46
+printf("address: %p\n", (void *)(host_addrs[i])); 
+# 47
+}  
+# 48
+cudaError_t memcpyerr = cudaMemcpy(addrs, host_addrs, sizeof(int *) * addr_count, cudaMemcpyHostToDevice); 
+# 49
+if (memcpyerr == (cudaErrorInvalidValue)) { 
+# 50
+printf("cudaMemcpy failed cudaErrorInvalidValue\n"); 
+# 51
+exit(-1); 
+# 52
+}  
+# 53
+if (memcpyerr == (cudaErrorInvalidDevicePointer)) { 
+# 54
+printf("cudaMemcpy failed cudaErrorInvalidDevicePointer\n"); 
+# 55
+exit(-1); 
+# 56
+}  
+# 57
+if (memcpyerr == (cudaErrorInvalidMemcpyDirection)) { 
+# 58
+printf("cudaMemcpy failed cudaErrorMemcpyDirection\n"); 
+# 59
+exit(-1); 
+# 60
+}  
+# 61
+printf("past the addr cudaMemcpy\n"); 
+# 65
+printf("starting kernel\n"); 
+# 66
+timer.Start(); 
+# 67
+(__cudaPushCallConfiguration(1, 1)) ? (void)0 : kernel(addrs, addr_count, toggles, mem, mem_size); 
+# 68
+timer.Stop(); 
+# 69
+cudaError_t cudaerr = cudaDeviceSynchronize(); 
+# 70
+if (cudaerr != (cudaSuccess)) { 
+# 71
+printf("kernel launch failed with error \"%s\".\n", cudaGetErrorString(cudaerr)); }  
+# 74
+printf("%d memory accesses done on %d addresses in %g ms\n", toggles, addr_count, timer.Elapsed()); 
+# 77
 printf("starting sanity checks and memory copy to host...\n"); 
-# 90
+# 80
 int *hostmem = (int *)malloc(mem_size); 
-# 91
-printf("mem size: %zu\n", mem_size); 
-# 92
+# 81
+printf("mem size: %lu\n", mem_size); 
+# 82
 printf("hostmem address is %p\n", (void *)hostmem); 
-# 93
+# 83
 printf("past host malloc\n"); 
-# 96
+# 86
 memset(hostmem, 0, mem_size); 
-# 97
+# 87
 printf("past host memset\n"); 
-# 100
-cudaerr = cudaMemcpy(hostmem, mem, mem_size, cudaMemcpyDeviceToHost); 
-# 101
-check_error(cudaerr); 
-# 102
-printf("past the cudaMemcpyDeviceToHost\n"); 
-# 105
-int *mem_end = ((int *)hostmem) + num_ints; 
-# 106
-printf("host mem_end address is %p\n", (void *)mem_end); 
-# 109
-printf("checking for bit flips..."); 
-# 110
-int flips = 0; 
-# 111
-int val = 0; 
-# 112
-int *pointer; 
-# 113
-for (pointer = hostmem; pointer < mem_end; pointer++) { 
-# 114
-val = (*pointer); 
-# 115
-if (val != (-1)) { 
-# 116
-flips++; 
-# 117
-printf("found error!\n"); 
-# 118
+# 90
+memcpyerr = cudaMemcpy(hostmem, mem, mem_size, cudaMemcpyDeviceToHost); 
+# 91
+if (memcpyerr == (cudaErrorInvalidValue)) { 
+# 92
+printf("cudaMemcpy failed cudaErrorInvalidValue\n"); 
+# 93
+exit(-1); 
+# 94
 }  
+# 95
+if (memcpyerr == (cudaErrorInvalidDevicePointer)) { 
+# 96
+printf("cudaMemcpy failed cudaErrorInvalidDevicePointer\n"); 
+# 97
+exit(-1); 
+# 98
+}  
+# 99
+if (memcpyerr == (cudaErrorInvalidMemcpyDirection)) { 
+# 100
+printf("cudaMemcpy failed cudaErrorMemcpyDirection\n"); 
+# 101
+exit(-1); 
+# 102
+}  
+# 103
+printf("past the cudaMemcpyDeviceToHost\n"); 
+# 106
+int *mem_end = ((int *)hostmem) + num_ints; 
+# 107
+printf("host mem_end address is %p\n", (void *)mem_end); 
+# 110
+printf("checking for bit flips..."); 
+# 111
+int flips = 0; 
+# 112
+int val = 0; 
+# 113
+int *pointer; 
+# 114
+for (pointer = hostmem; pointer < mem_end; pointer++) { 
+# 115
+val = (*pointer); 
+# 116
+if (val != (-1)) { 
+# 117
+flips++; 
+# 118
+printf("found error!\n"); 
 # 119
 }  
 # 120
-printf("found %d errors\n", flips); 
+}  
 # 121
+printf("found %d errors\n", flips); 
+# 122
 } 
-# 123
-struct test_opts { 
-# 124
-int iterations; 
 # 125
-int toggles; 
-# 126
-int addr_count; 
-# 127
-int numvals; 
-# 128
-int blocks; 
-# 129
-int threads; 
-# 130
-int data_pattern; 
-# 131
-int logging; 
-# 132
-char byte_value; 
-# 133
-}; 
-# 135
-void usage(char **argv) { 
-# 136
-printf("Cudahammer test usage:\n%s [-i iterations] [-t toggles] [-a addr_count] [-b blocks] [-h threads] [-n numvals] [-p data_pattern] " "[-v byte_value] [-l]\nOPTION\t\tDEFAULT\t\tDESCRIPTION\n\t\t\t-i\t\t\t10\t\t\t(int) The number of times to pick a set of address" "es to hammer (0 means infinite).\n-t\t\t\t500000\t\t(int) The number of times to toggle each address.\n-a\t\t\t8\t\t\t(int) The " "number of addresses to pick for a single iteration of the hammer attempt.\n-b\t\t\t1\t\t\t(int) The number of blocks for the tes" "t kernel launch.\n-h\t\t\t1\t\t\t(int) The number of threads for the test kernel launch.\n-n\t\t\t268435456\t(int) The number of" " 32-bit ints to allocate memory for (default is 1GB worth).\n-p\t\t\t1\t\t\t(int) The data pattern to use - check the README for" " more explanation.\n-v\t\t\t0xff\t\t(char) The single byte value to memset the allocated memory with.\n-l\t\t\toff\t\t\tDisply l" "ogging messages during test operation.\n-u\t\t\toff\t\t\tDisplay this usage message and exit.\n", argv[0]); 
-# 137
-} 
-# 139
 int main(int argc, char **argv) { 
-# 142
-const char *opts_string = (""); 
-# 143
-test_opts opts = {2, 10, 8, 268435456, 1, 1, 1, 0, ((char)255)}; 
-# 144
-int flag; 
-# 145
-while ((flag = (getopt(argc, argv, opts_string) != (-1)))) { 
-# 146
-switch (flag) { 
-# 147
-case 'i':  
-# 148
-(opts.iterations) = atoi(optarg); 
-# 149
-break; 
-# 150
-case 't':  
-# 151
-(opts.toggles) = atoi(optarg); 
-# 152
-break; 
-# 153
-case 'a':  
-# 154
-(opts.addr_count) = atoi(optarg); 
-# 155
-break; 
-# 156
-case 'b':  
-# 157
-(opts.blocks) = atoi(optarg); 
-# 158
-break; 
-# 159
-case 'h':  
-# 160
-(opts.threads) = atoi(optarg); 
-# 161
-break; 
-# 162
-case 'n':  
-# 163
-(opts.numvals) = atoi(optarg); 
-# 164
-break; 
-# 165
-case 'p':  
-# 166
-(opts.data_pattern) = atoi(optarg); 
-# 167
-break; 
-# 168
-case 'v':  
-# 169
-(opts.byte_value) = (atoi(optarg)); 
-# 170
-break; 
-# 171
-case 'l':  
-# 172
-(opts.logging) = 1; 
-# 173
-break; 
-# 174
-case 'u':  
-# 175
-usage(argv); 
-# 176
-exit(-1); 
-# 177
-case '\?':  
-# 178
-usage(argv); 
-# 179
-exit(-1); 
-# 180
-default:  
-# 181
-usage(argv); 
-# 182
-exit(-1); 
-# 183
-}  
-# 184
-}  
-# 187
+# 127
+const size_t mem_size = (1 << 30); 
+# 130
+int toggles = atoi(argv[1]); 
+# 134
+int addr_count = atoi(argv[2]); 
+# 138
+int iterations = atoi(argv[3]); 
+# 141
 int *mem; 
-# 188
-cudaError_t cudaerr; 
-# 189
-cudaerr = cudaMalloc((void **)(&mem), sizeof(int) * (opts.numvals)); 
-# 190
-check_error(cudaerr); 
-# 191
-const size_t mem_size = opts.numvals; 
-# 193
-cudaerr = cudaMemset(mem, 255, mem_size); 
-# 194
-check_error(cudaerr); 
-# 197
-if ((opts.iterations) > 0) { 
-# 198
-for (int i = 0; i < (opts.iterations); i++) { 
-# 199
-hammer_attempt(opts.toggles, opts.addr_count, mem_size, mem); 
-# 200
+# 142
+cudaError_t mallocerr = cudaMalloc((void **)(&mem), mem_size); 
+# 143
+if (mallocerr == (cudaErrorMemoryAllocation)) { 
+# 144
+printf("cudaMalloc failed, exiting\n"); 
+# 145
+exit(-1); 
+# 146
 }  
-# 201
+# 149
+cudaError_t memseterr = cudaMemset(mem, 255, mem_size); 
+# 150
+if (memseterr == (cudaErrorInvalidValue)) { 
+# 151
+printf("cudaMemset failed cudaErrorInvalidValue\n"); 
+# 152
+exit(-1); 
+# 153
+}  
+# 154
+if (memseterr == (cudaErrorInvalidDevicePointer)) { 
+# 155
+printf("cudaMemset failed cudaErrorInvalidDevicePointer\n"); 
+# 156
+exit(-1); 
+# 157
+}  
+# 160
+if (iterations > 0) { 
+# 161
+for (int i = 0; i < iterations; i++) { 
+# 162
+hammer_attempt(toggles, addr_count, mem_size, mem); 
+# 163
+}  
+# 164
 } else 
-# 202
+# 165
 { 
-# 203
+# 166
 for (; ;) { 
-# 204
-hammer_attempt(opts.toggles, opts.addr_count, mem_size, mem); 
-# 205
+# 167
+hammer_attempt(toggles, addr_count, mem_size, mem); 
+# 168
 }  
-# 206
+# 169
 }  return 0; 
-# 207
+# 170
 } 
 
-# 1 "cudahammer_test.cudafe1.stub.c"
-#define _NV_ANON_NAMESPACE _GLOBAL__N__ca134113_18_cudahammer_test_cu_64a58cf6
+# 1 "cudahammer_test_backup.cudafe1.stub.c"
+#define _NV_ANON_NAMESPACE _GLOBAL__N__19e3161f_25_cudahammer_test_backup_cu_ec0d1a0a
 #ifdef _NV_ANON_NAMESPACE
 #endif
-# 1 "cudahammer_test.cudafe1.stub.c"
-#include "cudahammer_test.cudafe1.stub.c"
-# 1 "cudahammer_test.cudafe1.stub.c"
+# 1 "cudahammer_test_backup.cudafe1.stub.c"
+#include "cudahammer_test_backup.cudafe1.stub.c"
+# 1 "cudahammer_test_backup.cudafe1.stub.c"
 #undef _NV_ANON_NAMESPACE

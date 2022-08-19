@@ -1,4 +1,4 @@
-#include "gputimer.h"
+#include "include/gputimer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -6,10 +6,11 @@
 #include <string.h>
 #include "cuda_profiler_api.h"
 
-__global__ void kernel1(int** addrs, int a, int toggles, int* mem, int mem_size) {
+__global__ void kernel1(int** addrs, int a, int toggles, int* mem, int mem_size, int i) {
 			asm("ld.param.cv.u32 %0, [%1];" : "=r"(*addrs[a]) : "l"(addrs[a]));
+			
 			//asm("ld.param.u32 %0, [%1];" : "=r"(x) : "l"(addrs[a]));
-			//printf("x: %d\n", *addrs[a]);
+			printf("x: %d\n", *addrs[a]);
 }
 
 __global__ void kernel2(int* addrs, int a) {
@@ -58,7 +59,7 @@ void hammer_attempt(int toggles, int addr_count, const size_t mem_size, int* mem
 	int bytes = (4*1024*1024);
 	int*data;
 	data = (int*) malloc(bytes);
-	for(int j=0;j<bytes/8;j++){
+	for(int j=0;j<bytes/4;j++){
  		int new_data = rand();
 		data[j] = new_data;
 	}
@@ -70,24 +71,21 @@ void hammer_attempt(int toggles, int addr_count, const size_t mem_size, int* mem
 	// PERFORM THE HAMMERING MEMORY ACCESSES
 	// start timer, launch kernel, stop timer
 	for(int i = 0; i < toggles; i++){ 
-		for(int j = 0; j<bytes/8; j++){
+		for(int j = 0; j<bytes/4; j++){
 			kernel2<<<1,1>>>(dev_data, j);
 		}
 		for (int a = 0; a < addr_count; a++) {
-			printf("starting kernel\n");
-			timer.Start();
-			kernel1<<<1,1>>>(addrs, a, toggles, mem, mem_size);	
-			timer.Stop();
-			cudaerr = cudaDeviceSynchronize();
-			check_error(cudaerr);	
+			kernel1<<<1,1>>>(addrs, a, toggles, mem, mem_size,i);	
 
 			// report time taken 
-			printf("round %d: memory accesses done on addresses %d in %g ns\n",i, a, timer.Elapsed()*1000000);
+			//printf("round %d: memory accesses done on addresses %d in %g ns\n",i, a, timer.Elapsed()*1000000);
 		}
 	}
+	check_error(cudaDeviceSynchronize());
 	// CHECKING FOR FLIPS SECTION
 	printf("starting sanity checks and memory copy to host...\n");
 	
+
 	// allocate memory on host
 	int* hostmem = (int*) malloc(mem_size);
 	printf("mem size: %zu\n", mem_size);

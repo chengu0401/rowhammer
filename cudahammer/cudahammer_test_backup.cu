@@ -1,4 +1,4 @@
-#include "gputimer.h"
+#include "include/gputimer.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -78,7 +78,7 @@ void hammer_attempt(int toggles, int addr_count, const size_t mem_size, int* mem
 	
 	// allocate memory on host
 	int* hostmem = (int*) malloc(mem_size);
-	printf("mem size: %d\n", mem_size);
+	printf("mem size: %lu\n", mem_size);
 	printf("hostmem address is %p\n", (void*) hostmem);
 	printf("past host malloc\n");
 	

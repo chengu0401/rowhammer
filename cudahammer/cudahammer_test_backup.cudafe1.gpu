@@ -5,8 +5,6 @@ struct CUstream_st;
 struct CUevent_st;
 # 4 "include/gputimer.h"
 struct GpuTimer;
-# 123 "cudahammer_test.cu"
-struct test_opts;
 # 533 "/usr/include/c++/11/bits/cpp_type_traits.h" 3
 struct _ZSt24__is_memcmp_ordered_withISt4byteS0_Lb1EE;
 # 80 "/usr/include/c++/11/bits/stl_pair.h" 3
@@ -86,26 +84,6 @@ struct GpuTimer {
 struct CUevent_st *start;
 # 7 "include/gputimer.h"
 struct CUevent_st *stop;};
-# 123 "cudahammer_test.cu"
-struct test_opts {
-# 124 "cudahammer_test.cu"
-int iterations;
-# 125 "cudahammer_test.cu"
-int toggles;
-# 126 "cudahammer_test.cu"
-int addr_count;
-# 127 "cudahammer_test.cu"
-int numvals;
-# 128 "cudahammer_test.cu"
-int blocks;
-# 129 "cudahammer_test.cu"
-int threads;
-# 130 "cudahammer_test.cu"
-int data_pattern;
-# 131 "cudahammer_test.cu"
-int logging;
-# 132 "cudahammer_test.cu"
-char byte_value;char __nv_no_debug_dummy_end_padding_0[3];};
 # 280 "/usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h" 3
 typedef unsigned long _ZSt6size_t;
 # 533 "/usr/include/c++/11/bits/cpp_type_traits.h" 3
@@ -160,6 +138,8 @@ ___device__(static  __no_sc__) __inline__ enum cudaError cudaMalloc(void **, siz
 ___device__(extern  __no_sc__) enum cudaError cudaDeviceSynchronize(void);
 # 146 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
 ___device__(extern  __no_sc__) const char *cudaGetErrorString(enum cudaError);
+# 155 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaEventRecord(struct CUevent_st *, struct CUstream_st *);
 # 159 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
 ___device__(extern  __no_sc__) enum cudaError cudaEventDestroy(struct CUevent_st *);
 #if !defined(__CUDABE__)
@@ -360,10 +340,8 @@ ___device__(extern  __no_sc__) __attribute__((__alloc_size__(1))) __attribute__(
 #endif
 # 3308 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/crt/device_functions.h"
 ___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
-# 9 "cudahammer_test.cu"
-__global__ __var_used__ extern void _Z7kernel1PPiiiS_ii(int **, int, int, int *, int, int);
-# 16 "cudahammer_test.cu"
-__global__ __var_used__ extern void _Z7kernel2Pii(int *, int);
+# 6 "cudahammer_test_backup.cu"
+__global__ __var_used__ extern void _Z6kernelPPiiiS_i(int **, int, int, int *, int);
 #include "common_functions.h"
 # 70 "/usr/local/cuda-11.7/bin/../targets/x86_64-linux/include/cuda_device_runtime_api.h"
 ___device__(static  __no_sc__) __inline__ enum cudaError cudaMalloc(
@@ -567,37 +545,53 @@ return cudaErrorUnknown;
 #endif
 #if !defined(__CUDABE__)
 #endif
-# 9 "cudahammer_test.cu"
-__global__ __var_used__ void _Z7kernel1PPiiiS_ii(
-# 9 "cudahammer_test.cu"
+# 6 "cudahammer_test_backup.cu"
+__global__ __var_used__ void _Z6kernelPPiiiS_i(
+# 6 "cudahammer_test_backup.cu"
 int **addrs, 
-# 9 "cudahammer_test.cu"
-int a, 
-# 9 "cudahammer_test.cu"
+# 6 "cudahammer_test_backup.cu"
+int addr_count, 
+# 6 "cudahammer_test_backup.cu"
 int toggles, 
-# 9 "cudahammer_test.cu"
+# 6 "cudahammer_test_backup.cu"
 int *mem, 
-# 9 "cudahammer_test.cu"
-int mem_size, 
-# 9 "cudahammer_test.cu"
-int i){
-# 9 "cudahammer_test.cu"
+# 6 "cudahammer_test_backup.cu"
+int mem_size){
+# 6 "cudahammer_test_backup.cu"
 {
-# 10 "cudahammer_test.cu"
-__asm("ld.param.cv.u32 %0, [%1];" : "=r" (*(addrs[a])) : "l" (addrs[a]));
-# 13 "cudahammer_test.cu"
-printf(((const char *)"x: %d\n"), (*(addrs[a]))); 
-# 14 "cudahammer_test.cu"
-}}
-# 16 "cudahammer_test.cu"
-__global__ __var_used__ void _Z7kernel2Pii(
-# 16 "cudahammer_test.cu"
-int *addrs, 
-# 16 "cudahammer_test.cu"
-int a){
-# 16 "cudahammer_test.cu"
+# 7 "cudahammer_test_backup.cu"
+ int __cuda_local_var_33719_6_non_const_sum;
+# 7 "cudahammer_test_backup.cu"
+__cuda_local_var_33719_6_non_const_sum = 0;
+# 8 "cudahammer_test_backup.cu"
 {
-# 17 "cudahammer_test.cu"
-__asm("ld.param.cv.u32 %0, [%1];" : "=r" (addrs[a]) : "l" (addrs)); 
-# 20 "cudahammer_test.cu"
+# 8 "cudahammer_test_backup.cu"
+ int i;
+# 8 "cudahammer_test_backup.cu"
+i = 0;
+# 8 "cudahammer_test_backup.cu"
+for (; (i < toggles); i++)
+# 8 "cudahammer_test_backup.cu"
+{
+# 9 "cudahammer_test_backup.cu"
+{
+# 9 "cudahammer_test_backup.cu"
+ int a;
+# 9 "cudahammer_test_backup.cu"
+a = 0;
+# 9 "cudahammer_test_backup.cu"
+for (; (a < addr_count); a++)
+# 9 "cudahammer_test_backup.cu"
+{
+# 10 "cudahammer_test_backup.cu"
+ int __cuda_local_var_33722_8_non_const_x;
+# 10 "cudahammer_test_backup.cu"
+__cuda_local_var_33722_8_non_const_x = (*(addrs[a]));
+# 11 "cudahammer_test_backup.cu"
+__cuda_local_var_33719_6_non_const_sum += __cuda_local_var_33722_8_non_const_x;
+# 15 "cudahammer_test_backup.cu"
+} }
+# 16 "cudahammer_test_backup.cu"
+} } 
+# 17 "cudahammer_test_backup.cu"
 }}
